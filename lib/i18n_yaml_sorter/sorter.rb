@@ -58,7 +58,7 @@ module I18nYamlSorter
             content_line = @io_input.gets || break
             processed_line = content_line.chomp
             this_indentation = processed_line.match(/^\s*/)[0] rescue ""
-            if indentation.size < this_indentation.size
+            if (indentation.size < this_indentation.size) || (this_indentation.size == 0 && array.last.last == "\n")
               array.last << processed_line.concat("\n")
             else
               @read_line_again = content_line
