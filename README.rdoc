@@ -201,7 +201,7 @@ Run bundle install under your Rails' app:
   
 Now run the rake task under your Rails' app to sort all the i18n files in your +config/locales+ dir:
   
-  $rake i18n:sort
+  $ rake i18n:sort
 
 == Command line Input / Output
 
