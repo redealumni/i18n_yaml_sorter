@@ -25,31 +25,31 @@ module I18nYamlSorter
         next if maybe_next_line.match(/^\s*$/)
 
         #Does it look like a key: value line?
-        key_value_parse = maybe_next_line.match(/^(\s*)(["']?[\w\-]+["']?)(: )(\s*)(\S.*\S)(\s*)$/)
-        if  key_value_parse 
+        key_value_parse = maybe_next_line.match(/^(\s*)(["']?[\w\/\-]+["']?)(: )(\s*)(\S.*\S)(\s*)$/)
+        if  key_value_parse
           array << maybe_next_line.concat("\n")  #yes, it is the beginning of a key:value block
-    
+
           #Special cases when it should add extra lines to the array element (multi line quoted strings)
-    
+
           #Is the value surrounded by quotes?
           starts_with_quote = key_value_parse[5].match(/^["']/)[0] rescue nil
           ends_with_quote = key_value_parse[5].match(/[^\\](["'])$/)[1] rescue nil
-          if starts_with_quote and !(starts_with_quote == ends_with_quote)      
-      
+          if starts_with_quote and !(starts_with_quote == ends_with_quote)
+
             loop do #Append next lines until we find the closing quote
               content_line = @io_input.gets || break
               content_line.chomp!
               array.last << content_line.concat("\n")
               break if content_line.match(/[^\\][#{starts_with_quote}]\s*$/)
             end
-      
+
           end #  if starts_with_quote
-      
+
           next
-        end # if  key_value_parse 
-    
+        end # if  key_value_parse
+
         # Is it a | or > string alue?
-        is_special_string = maybe_next_line.match(/^(\s*)(["']?[\w\-]+["']?)(: )(\s*)([|>])(\s*)$/)
+        is_special_string = maybe_next_line.match(/^(\s*)(["']?[\w\/\-]+["']?)(: )(\s*)([|>])(\s*)$/)
         if is_special_string
           array << maybe_next_line.concat("\n")  #yes, it is the beginning of a key block
           indentation = is_special_string[1]
@@ -72,7 +72,7 @@ module I18nYamlSorter
         end #if is_special_string
     
         # Is it the begining of a multi level hash?
-        is_start_of_hash = maybe_next_line.match(/^(\s*)(["']?[\w\-]+["']?)(:)(\s*)$/)
+        is_start_of_hash = maybe_next_line.match(/^(\s*)(["']?[\w\/\-]+["']?)(:)(\s*)$/)
         if is_start_of_hash
           array << maybe_next_line.concat("\n")
           next
@@ -94,14 +94,15 @@ module I18nYamlSorter
     end
 
     def sorted_yaml_from_blocks_array(current_block = nil)
-  
+      key_regex = /^(\s*)(["']?[\w\/\-]+["']?)(:)/
+
       unless current_block
         current_block = @array[@current_array_index]
         @current_array_index += 1
       end
   
       out_array = []
-      current_match = current_block.match(/^(\s*)(["']?[\w\-]+["']?)(:)/)
+      current_match = current_block.match(key_regex)
       current_level = current_match[1] rescue ''
       current_key = current_match[2].downcase.tr(%q{"'}, "") rescue ''
       out_array << [current_key, current_block]
@@ -109,8 +110,8 @@ module I18nYamlSorter
       loop do
         next_block = @array[@current_array_index] || break
         @current_array_index += 1
-    
-        current_match = next_block.match(/^(\s*)(["']?[\w\-]+["']?)(:)/) || next
+
+        current_match = next_block.match(key_regex) || next
         current_key = current_match[2].downcase.tr(%q{"'}, "")
         next_level = current_match[1]
     
