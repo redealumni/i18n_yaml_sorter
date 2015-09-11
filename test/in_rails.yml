@@ -221,6 +221,7 @@
       less_than_or_equal_to: "deve ser menor ou igual a %{count}"
       odd: "deve ser ímpar"
       even: "deve ser par"
+      good/bad: "malo"
 
   activerecord:
     errors:
@@ -229,6 +230,19 @@
           one: "Não foi possível gravar %{model}: 1 erro"
           other: "Não foi possível gravar %{model}: %{count} erros."
         body: "Por favor, verifique o(s) seguinte(s) campo(s):"
+
+      models:
+        orange/blood:
+          kind/type: is too bloody.
+          color/hue: is not orange.
+        apple/granny_smith:
+          <<: *apple/base_messages
+          kind/type: is not sweet.
+        apple/braeburn:
+          <<: *apple/base_messages
+          kind/type: is sour.
+        apple/base: &apple/base_messages
+          color/hue: is not red/green.
 
       messages:
         taken: "já está em uso"

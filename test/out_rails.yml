@@ -9,6 +9,18 @@
         record_invalid: "A validação falhou: %{errors}"
         <<: *errors_messages
         taken: "já está em uso"
+      models:
+        apple/base: &apple/base_messages
+          color/hue: is not red/green.
+        apple/braeburn:
+          <<: *apple/base_messages
+          kind/type: is sour.
+        apple/granny_smith:
+          <<: *apple/base_messages
+          kind/type: is not sweet.
+        orange/blood:
+          color/hue: is not orange.
+          kind/type: is too bloody.
       template:
         body: "Por favor, verifique o(s) seguinte(s) campo(s):"
         header:
@@ -122,6 +134,7 @@
       equal_to: "deve ser igual a %{count}"
       even: "deve ser par"
       exclusion: "não está disponível"
+      good/bad: "malo"
       greater_than: "deve ser maior que %{count}"
       greater_than_or_equal_to: "deve ser maior ou igual a %{count}"
       inclusion: "não está incluído na lista"
