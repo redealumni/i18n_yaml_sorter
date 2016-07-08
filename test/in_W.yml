@@ -1,0 +1,67 @@
+# encoding: UTF-8
+
+m_13: >
+  Não deve dar problema aqui!
+  Não deve dar problema aqui!
+  Não deve dar problema aqui!
+  Pois às vezes dá.
+
+o_15: |
+  Não deve dar problema aqui!
+  Pois às vezes dá.
+
+b_(two)²:
+  a_1: Joãozinho
+  b_two: |
+    Nos somos legais, como
+    por exemplo: João,
+    que: gosta de nos dar milhões
+    em dinheiro todos os dias.
+    
+    Linhas em Branco com tabulação
+    nos strings devem ser preservadas.
+    
+  d_four: "Somos chatos
+    gostamos de várias linhas\"
+    e ainda usamos escaping
+    para fuder"
+  e_five: Prefirimos strings sem
+    nenhum tipo de especificação.
+  c_three:
+      a: "Marcelo"
+  g_se/ ven:
+      d_4: Rafael
+      # Comentário de muitas
+      # linhas (goes with d_4)
+      "b": Bernardo
+      c_3:
+          unify: Luiz
+          klass: Lucas
+  f_six: Dalton
+a_one: José   # Comentado
+c_three: Gustavo
+# Comentário (goes with c_three)
+f_six: Thiago
+e_five:
+  b_two: Catarina
+  a_one: Rodrigo
+  # Comentário (goes with a_one)
+"g-seven": Marcelo
+d_four: Oliveira
+k_eleven: Ronaldo
+"l_other123123": Emilio
+
+i_nine: Prestes
+
+j_ten: >
+  Pior quando resolvemos escrever
+  assim, impossível aturar!
+n_14: >
+  Não deve dar problema aqui!
+  Pois às vezes dá.
+o_15: |
+  Não deve dar problema aqui!
+  Pois às vezes dá.
+p_16: Não deve dar problema aqui!
+  Pois às vezes dá.
+h_eight: "Jonivildo"
