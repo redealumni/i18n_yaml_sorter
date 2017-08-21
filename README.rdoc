@@ -141,8 +141,8 @@ This:
 
 Becomes:
 
-  a_one: > 
-    This is another way 
+  a_one: >
+    This is another way
     of inputing text. It
     will squish whitespace
     when deserialized
@@ -153,13 +153,8 @@ Becomes:
       This is the best way of
       inputing large chunks of text
       in the YAML files.
-
       Note that this format keeps blank
       lines in the same indentation.
-   d_four: "We can also 
-      use the boring \"
-      across multiple lines 
-      but have to escape then."
     c_three:
         a: "Marcelo"
         "b": Bernardo
@@ -170,7 +165,11 @@ Becomes:
         # Your comments will be untouched
         # but will be bound to the element
         # on top of them (d_4 here).
-    e_five: Or you can do it 
+    d_four: "We can also
+      use the boring \"
+      across multiple lines
+      but have to escape then."
+    e_five: Or you can do it
       like that as well, it also works.
 
 == Installing
